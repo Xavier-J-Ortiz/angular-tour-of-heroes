@@ -36,7 +36,7 @@ template:
 	<input [(ngModel)] = "selectedHero.name" placeholder="name">	
 	</div>
 </div>
-
+<hero-detail [hero]="selectedHero"></hero-detail>
 `,
 
 
