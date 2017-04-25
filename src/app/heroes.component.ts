@@ -8,7 +8,6 @@ import { HeroService } from './hero.service';
 	template: 
 `
 	<h2>My Heroes</h2>
-	<my-heroes></my-heroes>
 	<ul class="heroes">
 	<li *ngFor="let hero of heroes" 
 	(click)="onSelect(hero)" 
