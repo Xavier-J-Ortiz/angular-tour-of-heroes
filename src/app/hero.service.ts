@@ -10,6 +10,7 @@ export class HeroService{
 
 	private heroesUrl = 'api/heroes';  // URL to web api
 	constructor(private http: Http) { }
+	private headers = new Headers({'Content-Type':'application/json'});
 
 	getHeroes(): Promise<Hero[]> {
 		return this.http.get(this.heroesUrl)
@@ -28,6 +29,15 @@ export class HeroService{
 		return this.http.get(url)
 		.toPromise()
 		.then(response => response.json().data as Hero)
+		.catch(this.handleError);
+	}
+
+	update(hero: Hero): Promise<Hero> {
+		const url = `${this.heroesUrl}/${hero.id}`;
+		return this.http
+		.put(url, JSON.stringify(hero), {headers: this.headers})
+		.toPromise()
+		.then(() => hero)
 		.catch(this.handleError);
 	}
 
